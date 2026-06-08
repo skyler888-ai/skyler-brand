@@ -1,0 +1,510 @@
+<html lang="zh-TW"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沐豐健康財富 | Build a Better You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d5a3d;
+            --primary-light: #4a7c59;
+            --accent: #e8b4b8;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f9f9f9;
+            --white: #fff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+
+        /* 頁面容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 導航欄 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        /* Hero 區塊 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 180, 184, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* 內容區塊 */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* 故事區塊 */
+        .story {
+            background-color: var(--white);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* 合作夥伴區塊 */
+        .partners-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .partner-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+
+        .partner-item::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* 聯絡區塊 */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background-color: rgba(255,255,255,0.2);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* 隱藏區塊 */
+        .hidden {
+            display: none;
+        }
+
+        /* 加載指示器 */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">沐豐健康財富</div>
+                <ul class="nav-links">
+                    <li><a href="#hero" data-manus_clickable="true" data-manus_click_id="1">首頁</a></li>
+                    <li><a href="#story" data-manus_clickable="true" data-manus_click_id="2">故事</a></li>
+                    <li><a href="#services" data-manus_clickable="true" data-manus_click_id="3">服務</a></li>
+                    <li><a href="#philosophy" data-manus_clickable="true" data-manus_click_id="4">理念</a></li>
+                    <li><a href="#partners" data-manus_clickable="true" data-manus_click_id="5">合作</a></li>
+                    <li><a href="#contact" data-manus_clickable="true" data-manus_click_id="6">聯絡</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="lang-btn" onclick="switchLanguage('zh-TW')" data-manus_clickable="true" data-manus_click_id="7">繁</button>
+                    <button class="lang-btn" onclick="switchLanguage('zh-CN')" data-manus_clickable="true" data-manus_click_id="8">简</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')" data-manus_clickable="true" data-manus_click_id="9">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero 區塊 -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <h1 data-zh-tw="重新定義成功" data-zh-cn="重新定义成功" data-en="Redefine Success"></h1>
+            <p data-zh-tw="健康、時間與收入 不該是三選一。" data-zh-cn="健康、时间与收入 不该是三选一。" data-en="Health, Time &amp; Income Should Not Be A Choice Of Three."></p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" data-zh-tw="了解我的故事" data-zh-cn="了解我的故事" data-en="Learn My Story" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})" data-manus_clickable="true" data-manus_click_id="10"></button>
+                <button class="btn btn-secondary" data-zh-tw="預約交流" data-zh-cn="预约交流" data-en="Book A Call" onclick="alert('預約功能開發中')" data-manus_clickable="true" data-manus_click_id="11"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 故事區塊 -->
+    <section class="story" id="story">
+        <div class="container">
+            <h2 data-zh-tw="我的故事" data-zh-cn="我的故事" data-en="My Story"></h2>
+            <div class="story-content">
+                <p data-zh-tw="曾經的我是一名全自費物理治療師。每天幫助個案改善疼痛與恢復健康。我熱愛這份工作。卻也在高工時與高壓力中，逐漸忽略了自己的身體。" data-zh-cn="曾经的我是一名全自费物理治疗师。每天帮助个案改善疼痛与恢复健康。我热爱这份工作。却也在高工时与高压力中，逐渐忽略了自己的身体。" data-en="I was once a self-funded physical therapist. Every day I helped clients recover from pain and regain their health. I loved this work. Yet I gradually neglected my own body in the long hours and high pressure."></p>
+                <p data-zh-tw="直到住院那次，我才真正明白：人生最大的風險，不是沒有收入，而是失去健康後才發現一切都來不及。" data-zh-cn="直到住院那次，我才真正明白：人生最大的风险，不是没有收入，而是失去健康后才发现一切都来不及。" data-en="It wasn't until I was hospitalized that I truly understood: the biggest risk in life is not losing income, but losing health and realizing it's too late."></p>
+                <p data-zh-tw="這段經歷讓我開始思考：有沒有一種方式，可以同時幫助更多人獲得健康，也創造更大的社會影響力？" data-zh-cn="这段经历让我开始思考：有没有一种方式，可以同时帮助更多人获得健康，也创造更大的社会影响力？" data-en="This experience made me think: Is there a way to help more people achieve health while creating greater social impact?"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務區塊 -->
+    <section id="services">
+        <div class="container">
+            <h2 data-zh-tw="我正在做的事情" data-zh-cn="我正在做的事情" data-en="What I'm Doing"></h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3 data-zh-tw="A New Me" data-zh-cn="A New Me" data-en="A New Me"></h3>
+                    <p data-zh-tw="三個月健康與體態重塑計畫。協助建立健康習慣與生活系統。" data-zh-cn="三个月健康与体态重塑计划。协助建立健康习惯与生活系统。" data-en="3-month health and body transformation program. Help establish healthy habits and life systems."></p>
+                </div>
+                <div class="card">
+                    <h3 data-zh-tw="健康營養方案" data-zh-cn="健康营养方案" data-en="Health Nutrition Plan"></h3>
+                    <p data-zh-tw="透過科學化營養補充，幫助身體維持最佳狀態。" data-zh-cn="通过科学化营养补充，帮助身体维持最佳状态。" data-en="Through scientific nutrition supplementation, help your body maintain optimal condition."></p>
+                </div>
+                <div class="card">
+                    <h3 data-zh-tw="健康教育分享" data-zh-cn="健康教育分享" data-en="Health Education"></h3>
+                    <p data-zh-tw="分享健康管理、生活習慣與成長思維。讓更多人掌握健康主導權。" data-zh-cn="分享健康管理、生活习惯与成长思维。让更多人掌握健康主导权。" data-en="Share health management, lifestyle habits and growth mindset. Empower more people to take control of their health."></p>
+                </div>
+                <div class="card">
+                    <h3 data-zh-tw="創業合作機會" data-zh-cn="创业合作机会" data-en="Business Partnership"></h3>
+                    <p data-zh-tw="與志同道合的人一起拓展大健康市場。共同創造更大的價值與影響力。" data-zh-cn="与志同道合的人一起拓展大健康市场。共同创造更大的价值与影响力。" data-en="Expand the health market with like-minded partners. Create greater value and impact together."></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 理念區塊 -->
+    <section id="philosophy">
+        <div class="container">
+            <h2 data-zh-tw="我的理念" data-zh-cn="我的理念" data-en="My Philosophy"></h2>
+            <div class="story-content">
+                <p data-zh-tw="健康不是目的，而是實現夢想的基礎。" data-zh-cn="健康不是目的，而是实现梦想的基础。" data-en="Health is not the goal, but the foundation for achieving your dreams."></p>
+                <p data-zh-tw="當一個人擁有健康，他有機會追求更多可能。當一個人擁有成長能力，他有機會改變人生。當一個人擁有好的平台，他有機會創造更大的價值。" data-zh-cn="当一个人拥有健康，他有机会追求更多可能。当一个人拥有成长能力，他有机会改变人生。当一個人拥有好的平台，他有机会创造更大的价值。" data-en="When a person has health, they have the opportunity to pursue more possibilities. When a person has growth ability, they have the opportunity to change their life. When a person has a good platform, they have the opportunity to create greater value."></p>
+                <p data-zh-tw="我相信，真正的成功，是讓健康、成長與收入能夠同步提升。" data-zh-cn="我相信，真正的成功，是让健康、成长与收入能够同步提升。" data-en="I believe that true success is when health, growth, and income rise together."></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作夥伴區塊 -->
+    <section id="partners">
+        <div class="container">
+            <h2 data-zh-tw="我正在尋找這樣的人" data-zh-cn="我正在寻找这样的人" data-en="I'm Looking For People Like This"></h2>
+            <div class="partners-list">
+                <div class="partner-item" data-zh-tw="認同健康的重要性" data-zh-cn="认同健康的重要性" data-en="Believe in the importance of health"></div>
+                <div class="partner-item" data-zh-tw="願意持續學習成長" data-zh-cn="愿意持续学习成长" data-en="Willing to continuously learn and grow"></div>
+                <div class="partner-item" data-zh-tw="希望打造第二收入來源" data-zh-cn="希望打造第二收入来源" data-en="Want to build a second income stream"></div>
+                <div class="partner-item" data-zh-tw="喜歡幫助別人" data-zh-cn="喜欢帮助别人" data-en="Love helping others"></div>
+                <div class="partner-item" data-zh-tw="對大健康產業有興趣" data-zh-cn="对大健康产业有兴趣" data-en="Interested in the health industry"></div>
+                <div class="partner-item" data-zh-tw="希望參與全球市場發展機會" data-zh-cn="希望参与全球市场发展机会" data-en="Want to participate in global market opportunities"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡區塊 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 data-zh-tw="讓未來的自己感謝今天的決定" data-zh-cn="让未来的自己感谢今天的决定" data-en="Let Your Future Self Thank You For Today's Decision"></h2>
+            <p data-zh-tw="每一次改變，都從一次對話開始。加入我的社群，一起探索健康、成長與更多可能。" data-zh-cn="每一次改变，都从一次对话开始。加入我的社群，一起探索健康、成长与更多可能。" data-en="Every change starts with a conversation. Join my community and explore health, growth and more possibilities together."></p>
+            <div class="social-links">
+                <a href="https://line.me/ti/p/ILtyzkWjqp" class="social-link" target="_blank" data-manus_clickable="true" data-manus_click_id="12">
+                    <span>💬</span>
+                    <span data-zh-tw="LINE" data-zh-cn="LINE" data-en="LINE"></span>
+                </a>
+                <a href="https://www.instagram.com/reel/DLrc2JdpsOJ/?igsh=MjBwNHVqNnpvNmM1" class="social-link" target="_blank" data-manus_clickable="true" data-manus_click_id="13">
+                    <span>📷</span>
+                    <span data-zh-tw="Instagram" data-zh-cn="Instagram" data-en="Instagram"></span>
+                </a>
+                <a href="https://u.wechat.com/MI5YyQHa1xBDG3U3kBLAtkY?s=2" class="social-link" target="_blank" data-manus_clickable="true" data-manus_click_id="14">
+                    <span>🔗</span>
+                    <span data-zh-tw="WeChat" data-zh-cn="WeChat" data-en="WeChat"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container">
+            <p>© 2026 沐豐健康財富股份有限公司 | MUFENG Health &amp; Wealth Corporation</p>
+            <p data-zh-tw="Build a Better You | 打造更健康、更自由、更有選擇權的人生" data-zh-cn="Build a Better You | 打造更健康、更自由、更有选择权的人生" data-en="Build a Better You | Create a healthier, freer, and more empowered life"></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLanguage = 'zh-TW';
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 更新所有文字
+            document.querySelectorAll('[data-zh-tw]').forEach(element => {
+                const text = element.getAttribute(`data-${lang.toLowerCase()}`);
+                if (text) {
+                    if (element.tagName === 'BUTTON' || element.tagName === 'A') {
+                        element.textContent = text;
+                    } else if (element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3') {
+                        element.textContent = text;
+                    } else if (element.tagName === 'P') {
+                        element.textContent = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('zh-TW');
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
