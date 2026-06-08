@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徐安葶 Skyler | 健康 × 成長 × 財富 — 沐豐健康財富</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d5a3d;
+            --secondary: #4a7c59;
+            --accent: #e8b4b8;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --text: #333;
+            --border: #ddd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #d99aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 180, 184, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.85;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: 2px solid white;
+        }
+
+        .hero-button.primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .hero-button.secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Brand Statement */
+        .brand-statement {
+            background: var(--light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .brand-statement h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .brand-statement p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Core Values */
+        .core-values {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .core-values h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(45, 90, 61, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .value-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light);
+            padding: 4rem 2rem;
+        }
+
+        .services h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 24px rgba(45, 90, 61, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Health Market Section */
+        .health-market {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .health-market h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .health-market-intro {
+            background: linear-gradient(135deg, rgba(45, 90, 61, 0.05) 0%, rgba(232, 180, 184, 0.05) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .health-market-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .health-opportunities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .opportunity-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(232, 180, 184, 0.2);
+        }
+
+        .opportunity-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .opportunity-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .story-content {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            line-height: 1.9;
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .story-highlight {
+            background: linear-gradient(120deg, rgba(232, 180, 184, 0.1), rgba(45, 90, 61, 0.05));
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: 2px solid white;
+            display: inline-block;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-button,
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">沐豐健康財富</a>
+        <ul>
+            <li><a href="#story">故事</a></li>
+            <li><a href="#values">理念</a></li>
+            <li><a href="#services">服務</a></li>
+            <li><a href="#health-market">大健康市場</a></li>
+            <li><a href="#about">關於Skyler</a></li>
+            <li><a href="https://line.me/ti/p/tw-link" class="cta-button">預約諮詢</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>健康 × 成長 × 財富</h1>
+        <p class="subtitle">成就更好的自己</p>
+        <p class="tagline">從物理治療師到金融保險，再到大健康產業<br>我用三段人生經歷，幫助更多人打造健康的生活型態</p>
+        <div class="hero-buttons">
+            <a href="https://line.me/ti/p/tw-link" class="hero-button primary">預約 1v1 諮詢</a>
+            <a href="#story" class="hero-button secondary">了解我的故事 →</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>15+</h3>
+            <p>年專業服務經驗<br>（物理治療 + 金融保險 + 大健康）</p>
+        </div>
+        <div class="stat-item">
+            <h3>1,000+</h3>
+            <p>服務過的客戶與學員</p>
+        </div>
+        <div class="stat-item">
+            <h3>3</h3>
+            <p>個人生涯轉折<br>每一次都成為了我最強的武器</p>
+        </div>
+        <div class="stat-item">
+            <h3>∞</h3>
+            <p>想幫助的人數<br>只要你願意改變</p>
+        </div>
+    </section>
+
+    <!-- Brand Statement -->
+    <section class="brand-statement">
+        <h2>品牌靈魂宣言</h2>
+        <p><strong>健康、成長與財富的完整生態</strong></p>
+        <p>在這個忙碌、競爭、容易迷茫的時代，<br>
+        你需要的不只是健康，也不只是財富，<br>
+        而是一個<strong>讓你能同時擁有健康、成長與選擇權的完整系統</strong>。</p>
+        <p>我用15年的實戰經驗，把複雜的身心靈、金融規劃、大健康產業化繁為簡，<br>
+        讓你一步步走向真正的人生自由。</p>
+    </section>
+
+    <!-- Core Values -->
+    <section class="core-values" id="values">
+        <h2>我的核心理念</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>🏥 健康</h3>
+                <p>健康是一切的起點。不只是沒有疾病，而是擁有足夠的能量去追求夢想、照顧家人、實現人生價值。</p>
+            </div>
+            <div class="value-card">
+                <h3>📈 成長</h3>
+                <p>人生最大的風險是停止成長。我鼓勵每一個人持續學習、突破、提升自己。每一次成長，都創造新的可能。</p>
+            </div>
+            <div class="value-card">
+                <h3>💰 財富</h3>
+                <p>財富的意義不是炫耀擁有多少，而是擁有更多選擇人生的自由。有能力陪伴家人、追求理想、幫助更多人。</p>
+            </div>
+            <div class="value-card">
+                <h3>🌟 影響力</h3>
+                <p>一個人的成功不是獲得多少，而是能夠幫助多少人變得更好。透過健康、教育與成長，讓更多人擁有更好的未來。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>我正在做的事情</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💪</div>
+                <h3>A New Me 體態管理</h3>
+                <p>三個月健康與體態重塑計畫。協助建立健康習慣與生活系統，讓你擁有健康的身體。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🥗</div>
+                <h3>健康營養方案</h3>
+                <p>透過科學化營養補充，幫助身體維持最佳狀態。健康不只是運動，更需要正確的營養支持。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>健康教育分享</h3>
+                <p>分享健康管理、生活習慣與成長思維。讓更多人掌握健康主導權，成為自己身體的主人。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>創業合作機會</h3>
+                <p>與志同道合的人一起拓展大健康市場。共同創造更大的價值與影響力，打造屬於我們的事業。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story" id="story">
+        <h2>從幫助身體復原，到守護人生風險，再到打造健康人生</h2>
+        <div class="story-content">
+            <p>我是徐安葶（Skyler）。</p>
+            
+            <p>曾經，我是一位全自費物理治療師。</p>
+            
+            <p>那時候的我，每天最大的成就感，就是看見個案從疼痛中恢復、從無法活動到重新找回生活品質。</p>
+            
+            <p>我相信健康可以改變一個人的人生。</p>
+            
+            <p>因此投入大量時間學習專業知識，希望幫助更多人。</p>
+            
+            <p>然而，隨著工作年資增加，我開始看見另一個現實。</p>
+            
+            <p>許多人即使恢復了健康，卻仍然因為疾病、意外或家庭責任而承受巨大的經濟壓力。</p>
+            
+            <div class="story-highlight">
+                我發現，健康固然重要，但人生需要被守護的，不只是身體。
+            </div>
+            
+            <p>於是，我跨入了金融保險領域。</p>
+            
+            <p>希望透過專業規劃，幫助個人與家庭建立風險防護網，讓更多人在面對人生變化時，依然擁有選擇與保障。</p>
+            
+            <p>然而，在服務客戶的過程中，我又看見了另一件事。</p>
+            
+            <p>許多人努力工作、努力賺錢、努力規劃未來，卻忽略了最重要的資產——自己的健康。</p>
+            
+            <p>甚至有些人擁有財富，卻失去了享受人生的能力。</p>
+            
+            <p>而我自己，也曾因為長期投入工作而住院。</p>
+            
+            <div class="story-highlight">
+                那段經歷讓我深刻體會：健康不是人生的全部，但失去健康時，健康會變成人生的全部。
+            </div>
+            
+            <p>因此，我決定重新回到自己最熟悉也最熱愛的領域。</p>
+            
+            <p><strong>大健康產業。</strong></p>
+            
+            <p>不是回到過去，而是帶著過去所有的經驗重新出發。</p>
+            
+            <p>因為我相信，真正的幸福人生，不只是身體健康，也不只是財務穩定。</p>
+            
+            <p>而是<strong>健康、成長與財富能夠同步發展</strong>。</p>
+            
+            <p>這也是我創立沐豐健康財富的初衷。</p>
+            
+            <p>希望幫助更多人建立更健康的身體、更穩定的生活，以及更有選擇權的人生。</p>
+        </div>
+    </section>
+
+    <!-- Health Market Section -->
+    <section class="health-market" id="health-market">
+        <h2>大健康市場機會</h2>
+        <div class="health-market-intro">
+            <p>大健康產業不只是醫療和健身，而是一個涵蓋預防、管理、改善全人健康的完整生態。在這個市場中，有無限的機會等待著有遠見的創業者和合作夥伴。</p>
+        </div>
+        <div class="health-opportunities">
+            <div class="opportunity-card">
+                <h3>🌱 預防性健康管理</h3>
+                <p>從預防開始，而不是等到生病才治療。建立完整的健康檢測、評估、改善系統，幫助人們在疾病發生前就做好準備。</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>💪 體態與運動科學</h3>
+                <p>結合運動科學、營養學、心理學，打造完整的體態管理方案。不只是減重，而是幫助人們建立健康的身體與生活習慣。</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>🧠 身心靈整合</h3>
+                <p>健康不只是身體，還包括心理健康與靈性成長。透過冥想、能量提升、心理諮詢等方式，幫助人們達到身心靈的平衡。</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>🔬 科技 × 健康</h3>
+                <p>利用AI、可穿戴設備、大數據等科技手段，讓健康管理變得更科學、更精準、更高效。個性化健康方案成為新常態。</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>🏘️ 社群 × 健康</h3>
+                <p>建立高價值的健康社群，讓志同道合的人一起成長。社群不只是交流平台，更是相互支持、共同進步的生態。</p>
+            </div>
+            <div class="opportunity-card">
+                <h3>💼 健康 × 商業</h3>
+                <p>將健康理念轉化為可持續的商業模式。從線上課程、健康產品、諮詢服務到創業合作，打造多元收入管道。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>關於 Skyler 徐安葶</h2>
+                <p><strong>物理治療師背景 · 金融保險專家 · 大健康產業創業者</strong></p>
+                <p>15年專業服務經驗，跨越三個不同領域，每一次轉折都成為了我最強的武器。</p>
+                <p>我不是來賣課程或產品的，我是來把這些武器完整交給你。</p>
+                <p>透過健康管理、財務規劃、創業合作，我正在幫助更多人打造更自由、更有選擇權的人生。</p>
+                <p><strong>我的使命：</strong>幫助更多人建立健康的身體、成長的能力與財富的選擇權，活出更自由、更有價值的人生。</p>
+            </div>
+            <div class="about-image">
+                <div>
+                    <p>徐安葶 (Skyler)</p>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.8;">沐豐健康財富 創辦人</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>開始你的轉變</h2>
+        <p>最好的時間是10年前，其次就是現在。</p>
+        <p>預約一次免費的1v1諮詢，讓我幫你找出最適合你的成長路徑。</p>
+        <div class="cta-buttons">
+            <a href="https://line.me/ti/p/tw-link" class="cta-btn primary">預約 1v1 諮詢</a>
+            <a href="#story" class="cta-btn secondary">了解更多</a>
+        </div>
+        <div class="social-links">
+            <a href="https://line.me/ti/p/tw-link" class="social-link">💬 LINE</a>
+            <a href="https://www.instagram.com/reel/DLrc2JdpsOJ/?igsh=MjBwNHVxNnpvNmM1" class="social-link">📷 Instagram</a>
+            <a href="https://u.wechat.com/MI5YyQHa1xBDG3U3kBLAtkY?s=2" class="social-link">🔗 WeChat</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#story">故事</a>
+                <a href="#values">理念</a>
+                <a href="#services">服務</a>
+                <a href="#health-market">大健康市場</a>
+                <a href="#about">關於</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://line.me/ti/p/tw-link" title="LINE">💬</a>
+                <a href="https://www.instagram.com/reel/DLrc2JdpsOJ/?igsh=MjBwNHVxNnpvNmM1" title="Instagram">📷</a>
+                <a href="https://u.wechat.com/MI5YyQHa1xBDG3U3kBLAtkY?s=2" title="WeChat">🔗</a>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2026 沐豐健康財富 · 徐安葶 (Skyler) · 版權所有</p>
+                <p>健康 × 成長 × 財富 · 成就更好的自己</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Sticky nav shadow
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.style.boxShadow = '0 2px 12px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
